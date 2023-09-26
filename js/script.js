@@ -1,44 +1,5 @@
 'use strict';
 
-//forEach
-//const newNums = [5, 6, 54, 12, 1, 10]
-//nums.forEach(num => console.log(num))
-
-//map
-//старый подход
-//const newNums = []
-//for(let num of nums){
-//    newNums.push(num*2)
-//}
-//console.log(newNums);
-
-//новый подход
-//const newNums = nums.map(num => num*2)  
-//console.log(newNums);
-
-//если много действии
-//const newNums = nums.map(num => {console.log('работает!');
-//return num*2 //return возвращаем выражение
-//})  
-//console.log(newNums);
-
-//часто пользуются map и filter
-
-//filter
-//старый подход
-//const even = []
-//for(let num of numsss){
-//    if(num % 2 === 0){
-//        even.push(num)
-//    }
-//}
-//console.log(even);
-
-//новый подход
-//const even = numsss.filter(num => num % 2 === 0) // true или false, вернет только true
-//JSON.stringify - преобразует обьект в строку
-//JSON.parse - преобразует JSON в javascript
-
 const input = document.querySelector('input');
 const button = document.querySelector('button');
 const todoItems = document.querySelector('ul');
@@ -81,8 +42,6 @@ const getInputValue = (event) => {
     event.preventDefault();
     select.value = 'all';
     if(input.value.trim() !== ''){
-        localStorage.setItem('id', taskId);
-        localStorage.setItem('arrTaskObjects', JSON.stringify(arrTaskObjects))
         const taskObject = {
             value: input.value,
             date: new Date().toLocaleDateString().slice(0, -3),
@@ -93,6 +52,8 @@ const getInputValue = (event) => {
         renderTasks(arrTaskObjects)
         taskId++;
         input.value = '';
+        localStorage.setItem('id', taskId);
+        localStorage.setItem('arrTaskObjects', JSON.stringify(arrTaskObjects))
     }
 };
 const deleteTask = (task) => {

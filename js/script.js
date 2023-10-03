@@ -25,6 +25,7 @@ const renderTasks = (arrTaskObjects) => {
             taskObject.completed ? 'completed' : 'active'
         );
         todoItems.append(task)
+
         const taskText = document.createElement('span')
         taskText.classList.add('todo__task')
         task.append(taskText);
@@ -68,7 +69,7 @@ const completeTask = (task) => {
             ?   {
                     value: taskObject.value,
                     date: taskObject.date,
-                    completed: taskObject.id,
+                    completed: !taskObject.completed,
                     id: taskObject.id,
                 }
             :   taskObject
@@ -107,3 +108,4 @@ select.addEventListener('click', (event) => {
         filterCompletedTasks(arrTaskObjects)
     }
 });
+renderTasks(arrTaskObjects);
